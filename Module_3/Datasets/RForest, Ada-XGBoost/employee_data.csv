@@ -1,0 +1,401 @@
+ID,Gender,Experience (Years),Position,Salary
+1,F,4,DevOps Engineer,109976
+2,M,6,DevOps Engineer,120088
+3,M,17,Web Developer,181301
+4,M,7,Systems Administrator,77530
+5,F,13,Systems Administrator,152397
+6,F,13,Web Developer,114998
+7,F,11,Systems Administrator,82328
+8,M,2,DevOps Engineer,111494
+9,F,6,DevOps Engineer,105563
+10,F,6,IT Manager,162706
+11,F,19,Network Administrator,158856
+12,M,2,DevOps Engineer,103940
+13,F,16,Database Administrator (DBA),137662
+14,M,9,DevOps Engineer,139069
+15,F,7,IT Manager,150286
+16,M,13,IT Security Analyst,115698
+17,M,4,IT Security Analyst,111156
+18,F,16,Database Administrator (DBA),188681
+19,F,5,IT Security Analyst,129205
+20,M,5,Software Engineer,84342
+21,F,20,Network Administrator,139766
+22,F,19,IT Security Analyst,232972
+23,F,0,Software Engineer,71220
+24,F,13,IT Manager,235235
+25,F,3,Web Developer,71211
+26,F,10,IT Manager,146668
+27,F,5,IT Manager,158855
+28,M,17,Database Administrator (DBA),158415
+29,M,20,Network Administrator,116964
+30,F,20,IT Security Analyst,168554
+31,M,8,IT Security Analyst,146153
+32,M,7,DevOps Engineer,135205
+33,M,15,IT Support Specialist,120102
+34,M,3,IT Security Analyst,97240
+35,M,13,Network Administrator,101107
+36,M,1,IT Manager,87871
+37,M,14,Software Engineer,171297
+38,F,7,Systems Analyst,137535
+39,F,2,IT Support Specialist,87698
+40,F,4,Database Administrator (DBA),138718
+41,M,11,IT Security Analyst,149040
+42,M,1,Database Administrator (DBA),122207
+43,F,19,Network Administrator,149342
+44,M,4,Systems Administrator,65646
+45,F,1,IT Manager,112471
+46,F,10,Network Administrator,136474
+47,F,1,Software Engineer,114166
+48,F,1,Software Engineer,86362
+49,M,15,IT Support Specialist,130119
+50,M,6,IT Manager,181711
+51,F,13,Network Administrator,115201
+52,F,12,Systems Administrator,150854
+53,M,17,IT Manager,196175
+54,M,14,Network Administrator,137302
+55,F,12,IT Manager,143412
+56,M,20,Systems Administrator,190672
+57,F,10,IT Manager,180757
+58,F,16,IT Security Analyst,152107
+59,M,0,IT Manager,111250
+60,M,2,Systems Analyst,75749
+61,M,7,Database Administrator (DBA),105182
+62,M,17,IT Manager,260594
+63,F,9,Network Administrator,73364
+64,F,6,Cloud Solutions Architect,156504
+65,M,2,IT Support Specialist,48710
+66,M,17,DevOps Engineer,173720
+67,M,9,IT Manager,186239
+68,M,3,Systems Analyst,126171
+69,M,2,IT Security Analyst,79108
+70,M,1,Network Administrator,86110
+71,F,19,Cloud Solutions Architect,226461
+72,F,5,Cloud Solutions Architect,110321
+73,F,19,DevOps Engineer,172582
+74,F,1,Software Engineer,66956
+75,F,19,Database Administrator (DBA),142525
+76,F,2,Cloud Solutions Architect,141623
+77,M,15,Software Engineer,134111
+78,M,2,DevOps Engineer,132249
+79,M,12,Cloud Solutions Architect,176976
+80,F,7,Web Developer,77058
+81,F,12,Web Developer,117934
+82,F,0,Software Engineer,109573
+83,F,10,Cloud Solutions Architect,197617
+84,F,20,Systems Administrator,132670
+85,F,5,Web Developer,64220
+86,M,3,Cloud Solutions Architect,110084
+87,F,0,IT Support Specialist,54739
+88,F,1,IT Security Analyst,70941
+89,M,11,Database Administrator (DBA),156027
+90,F,13,Database Administrator (DBA),146249
+91,M,3,Web Developer,57567
+92,M,15,Systems Administrator,140147
+93,M,2,IT Security Analyst,97051
+94,M,16,IT Security Analyst,128620
+95,F,8,IT Security Analyst,150869
+96,M,1,Systems Administrator,102783
+97,F,12,IT Manager,207518
+98,F,10,IT Support Specialist,101278
+99,M,3,IT Manager,157705
+100,M,4,Cloud Solutions Architect,131176
+101,M,4,IT Support Specialist,62204
+102,M,1,DevOps Engineer,123049
+103,F,3,IT Support Specialist,90049
+104,M,9,Cloud Solutions Architect,161408
+105,F,16,Systems Analyst,153779
+106,M,3,Database Administrator (DBA),86225
+107,M,6,IT Security Analyst,135066
+108,M,14,IT Manager,205579
+109,M,2,Software Engineer,108575
+110,M,14,Database Administrator (DBA),123370
+111,M,9,Systems Analyst,147270
+112,F,1,IT Support Specialist,43643
+113,M,2,IT Manager,162398
+114,F,18,Software Engineer,164112
+115,F,4,Systems Analyst,116668
+116,M,18,IT Manager,269950
+117,M,16,DevOps Engineer,214282
+118,F,2,Systems Administrator,55964
+119,F,13,Database Administrator (DBA),184309
+120,F,17,DevOps Engineer,230965
+121,F,18,IT Manager,268774
+122,M,13,Network Administrator,145856
+123,F,12,Systems Analyst,100616
+124,M,18,Software Engineer,215034
+125,F,10,Software Engineer,99469
+126,F,18,IT Support Specialist,114492
+127,M,5,Systems Analyst,88697
+128,M,10,IT Support Specialist,90393
+129,F,11,Systems Analyst,120142
+130,F,14,IT Support Specialist,95631
+131,M,16,Systems Analyst,155017
+132,M,6,IT Support Specialist,103201
+133,M,3,Web Developer,57838
+134,M,14,Web Developer,149569
+135,F,1,Web Developer,59145
+136,F,3,Database Administrator (DBA),109928
+137,F,2,Systems Analyst,85246
+138,M,15,IT Support Specialist,90576
+139,F,3,Cloud Solutions Architect,127148
+140,M,10,Database Administrator (DBA),135496
+141,M,3,Systems Administrator,61236
+142,M,5,IT Security Analyst,82987
+143,M,0,Database Administrator (DBA),67396
+144,F,9,Network Administrator,113345
+145,M,12,Cloud Solutions Architect,217422
+146,F,1,IT Manager,133155
+147,M,19,Software Engineer,180669
+148,F,1,IT Support Specialist,49817
+149,M,19,Systems Analyst,179006
+150,M,7,Software Engineer,128503
+151,M,16,IT Security Analyst,207529
+152,M,19,DevOps Engineer,181201
+153,M,13,Database Administrator (DBA),192883
+154,M,8,Software Engineer,145530
+155,M,8,Software Engineer,149360
+156,M,8,Systems Analyst,141631
+157,M,0,IT Security Analyst,108050
+158,M,8,IT Support Specialist,69668
+159,F,15,DevOps Engineer,135999
+160,F,2,Systems Analyst,89662
+161,F,8,Software Engineer,159549
+162,M,17,IT Manager,244446
+163,M,5,Network Administrator,67910
+164,M,13,Database Administrator (DBA),134293
+165,M,14,Network Administrator,140241
+166,F,7,IT Manager,120172
+167,F,13,Systems Analyst,126492
+168,M,3,Cloud Solutions Architect,109601
+169,F,17,IT Security Analyst,175191
+170,F,11,Cloud Solutions Architect,134208
+171,M,20,Network Administrator,181654
+172,F,11,Web Developer,150102
+173,F,9,Systems Administrator,133765
+174,F,14,IT Support Specialist,82546
+175,F,5,Cloud Solutions Architect,145253
+176,F,6,Cloud Solutions Architect,107263
+177,M,5,IT Security Analyst,77683
+178,M,16,Web Developer,117435
+179,M,20,IT Security Analyst,120104
+180,M,13,Systems Administrator,108545
+181,F,17,Software Engineer,131849
+182,M,12,IT Support Specialist,122736
+183,F,12,Cloud Solutions Architect,153318
+184,F,4,Database Administrator (DBA),108860
+185,F,14,Systems Administrator,95988
+186,F,12,Systems Analyst,174272
+187,M,2,IT Security Analyst,114996
+188,F,1,Systems Analyst,86818
+189,M,11,IT Manager,153634
+190,M,11,Web Developer,116363
+191,F,18,DevOps Engineer,154557
+192,M,7,Database Administrator (DBA),132171
+193,F,15,IT Security Analyst,116529
+194,M,7,Web Developer,90340
+195,F,19,Systems Analyst,134871
+196,F,12,Software Engineer,178801
+197,F,18,IT Security Analyst,224671
+198,F,16,Systems Administrator,106131
+199,F,2,Cloud Solutions Architect,136537
+200,M,8,DevOps Engineer,128641
+201,F,7,IT Security Analyst,157825
+202,M,11,DevOps Engineer,196310
+203,F,11,Cloud Solutions Architect,150681
+204,F,14,Web Developer,148073
+205,F,19,IT Security Analyst,154443
+206,M,19,Web Developer,119320
+207,F,9,IT Security Analyst,142031
+208,F,0,IT Manager,149762
+209,F,10,Web Developer,143649
+210,M,11,Database Administrator (DBA),93165
+211,F,4,Web Developer,68000
+212,F,6,IT Support Specialist,78006
+213,M,6,Systems Administrator,127764
+214,M,8,IT Support Specialist,110734
+215,M,9,Network Administrator,85199
+216,M,11,Web Developer,114608
+217,M,14,IT Security Analyst,183382
+218,F,14,Web Developer,162487
+219,F,11,IT Security Analyst,149970
+220,M,4,Database Administrator (DBA),94797
+221,M,3,Software Engineer,100026
+222,F,0,Software Engineer,103124
+223,M,9,Systems Administrator,129155
+224,M,8,Systems Administrator,131847
+225,M,18,Web Developer,152404
+226,F,9,Systems Administrator,137897
+227,M,20,DevOps Engineer,218258
+228,F,14,Systems Analyst,186294
+229,F,18,Software Engineer,190752
+230,M,0,Systems Administrator,71389
+231,M,3,Web Developer,94989
+232,M,14,IT Manager,204549
+233,F,19,IT Support Specialist,136355
+234,F,4,Web Developer,96910
+235,M,8,DevOps Engineer,150620
+236,M,0,IT Support Specialist,70195
+237,F,5,Systems Administrator,93860
+238,M,17,Software Engineer,150031
+239,F,11,Database Administrator (DBA),97981
+240,F,14,IT Support Specialist,91480
+241,M,5,Systems Administrator,73047
+242,F,19,Systems Administrator,178265
+243,F,0,Web Developer,62301
+244,M,3,Systems Administrator,108998
+245,M,13,Web Developer,94615
+246,F,2,Systems Analyst,72006
+247,M,17,DevOps Engineer,177180
+248,F,3,IT Manager,158031
+249,M,10,Systems Administrator,98814
+250,F,19,Systems Administrator,130445
+251,F,7,Network Administrator,120406
+252,F,2,Systems Administrator,67127
+253,M,16,Software Engineer,174612
+254,F,4,Software Engineer,141261
+255,M,6,Database Administrator (DBA),116853
+256,M,1,Systems Analyst,93558
+257,M,9,IT Security Analyst,148118
+258,F,17,Software Engineer,175368
+259,F,3,DevOps Engineer,148634
+260,M,14,Cloud Solutions Architect,252949
+261,F,0,Database Administrator (DBA),90721
+262,M,11,DevOps Engineer,196839
+263,F,16,Cloud Solutions Architect,180331
+264,F,6,Software Engineer,92927
+265,M,10,Network Administrator,111025
+266,M,16,IT Manager,172094
+267,F,3,IT Manager,156738
+268,M,5,DevOps Engineer,157380
+269,M,9,Systems Analyst,132950
+270,F,5,Web Developer,70610
+271,F,7,IT Manager,115263
+272,M,1,Systems Analyst,79944
+273,M,13,Software Engineer,161927
+274,M,19,Database Administrator (DBA),132311
+275,M,19,Systems Administrator,116574
+276,M,13,Network Administrator,134437
+277,M,10,Database Administrator (DBA),166104
+278,M,11,Web Developer,100091
+279,F,0,Systems Analyst,102541
+280,F,14,Systems Administrator,125521
+281,M,5,Network Administrator,91842
+282,M,2,Systems Analyst,79431
+283,F,12,Web Developer,112825
+284,F,10,DevOps Engineer,130002
+285,M,6,Software Engineer,133508
+286,M,11,DevOps Engineer,180261
+287,F,20,IT Manager,190192
+288,F,10,Database Administrator (DBA),128220
+289,F,7,IT Support Specialist,106666
+290,M,7,IT Support Specialist,97317
+291,M,0,IT Security Analyst,70591
+292,F,15,Database Administrator (DBA),187353
+293,F,8,Web Developer,131530
+294,M,13,Database Administrator (DBA),108040
+295,F,7,DevOps Engineer,147688
+296,F,4,IT Support Specialist,74688
+297,F,3,Systems Analyst,83147
+298,M,18,Database Administrator (DBA),139000
+299,M,16,Web Developer,114764
+300,M,4,IT Security Analyst,125282
+301,M,10,IT Manager,164340
+302,F,19,Database Administrator (DBA),121293
+303,F,8,Web Developer,92514
+304,F,10,IT Manager,200409
+305,M,15,Systems Analyst,178571
+306,F,6,Software Engineer,136900
+307,M,0,Web Developer,64736
+308,M,15,DevOps Engineer,124153
+309,F,7,Database Administrator (DBA),125514
+310,M,12,IT Security Analyst,152934
+311,M,16,Software Engineer,181774
+312,F,18,Network Administrator,148410
+313,F,16,Systems Analyst,183411
+314,F,1,Software Engineer,97706
+315,M,10,IT Manager,150802
+316,M,5,Web Developer,118482
+317,F,20,Systems Analyst,206324
+318,M,18,Cloud Solutions Architect,242808
+319,M,10,Web Developer,128179
+320,F,10,IT Manager,193399
+321,M,2,Cloud Solutions Architect,92288
+322,F,18,Systems Administrator,130058
+323,F,15,Database Administrator (DBA),106204
+324,M,0,IT Security Analyst,114736
+325,F,11,Systems Analyst,111316
+326,M,2,IT Manager,103746
+327,F,15,DevOps Engineer,211620
+328,F,14,Web Developer,168536
+329,F,9,DevOps Engineer,159630
+330,M,17,Systems Analyst,188959
+331,M,19,Network Administrator,111362
+332,M,20,Database Administrator (DBA),214420
+333,M,20,DevOps Engineer,205418
+334,M,20,Systems Analyst,149160
+335,M,2,Web Developer,87875
+336,F,3,DevOps Engineer,131757
+337,F,6,IT Support Specialist,84510
+338,F,16,IT Support Specialist,88993
+339,M,4,Systems Administrator,98992
+340,M,11,Cloud Solutions Architect,142348
+341,F,9,Cloud Solutions Architect,126811
+342,M,12,Web Developer,81593
+343,M,17,Systems Analyst,112487
+344,F,6,Software Engineer,114791
+345,F,17,Systems Administrator,127533
+346,M,4,Software Engineer,107647
+347,F,12,Web Developer,147836
+348,F,19,DevOps Engineer,242819
+349,M,9,Systems Administrator,115769
+350,M,16,Web Developer,93819
+351,M,19,Cloud Solutions Architect,229450
+352,M,17,Database Administrator (DBA),163651
+353,F,12,Database Administrator (DBA),156865
+354,M,6,IT Security Analyst,154128
+355,F,17,Systems Analyst,113678
+356,F,9,DevOps Engineer,167738
+357,F,10,Cloud Solutions Architect,197467
+358,M,16,IT Manager,174920
+359,M,5,Software Engineer,76006
+360,M,4,Network Administrator,94624
+361,F,20,Network Administrator,174498
+362,F,18,DevOps Engineer,211696
+363,F,13,IT Support Specialist,100638
+364,F,12,DevOps Engineer,200228
+365,F,2,IT Security Analyst,111043
+366,M,1,Systems Administrator,78440
+367,F,10,Web Developer,81706
+368,M,15,Network Administrator,118781
+369,F,16,DevOps Engineer,157975
+370,M,13,Systems Administrator,159733
+371,M,1,Network Administrator,61605
+372,M,6,Systems Administrator,129226
+373,F,13,Systems Analyst,162457
+374,M,12,Network Administrator,116966
+375,M,13,Cloud Solutions Architect,167168
+376,M,3,Database Administrator (DBA),105768
+377,M,1,Cloud Solutions Architect,104113
+378,M,11,IT Manager,159942
+379,M,20,IT Manager,190956
+380,F,16,Systems Analyst,149281
+381,F,1,IT Security Analyst,110686
+382,F,0,IT Manager,105758
+383,M,10,Web Developer,91542
+384,F,14,Network Administrator,121650
+385,F,14,Systems Administrator,108497
+386,F,3,Systems Analyst,98196
+387,F,3,Web Developer,102394
+388,F,1,Network Administrator,103637
+389,F,4,Systems Administrator,102856
+390,F,9,IT Security Analyst,107445
+391,M,11,IT Support Specialist,66076
+392,F,3,Cloud Solutions Architect,159870
+393,F,1,Network Administrator,79333
+394,M,2,Software Engineer,91029
+395,M,3,IT Support Specialist,54938
+396,F,19,Cloud Solutions Architect,236045
+397,F,20,Web Developer,182770
+398,F,9,Network Administrator,85550
+399,M,18,Database Administrator (DBA),129996
+400,F,11,IT Security Analyst,169058
