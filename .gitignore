@@ -174,3 +174,8 @@ cython_debug/
 .pypirc
 
 *.mhtml
+
+*.mp4
+*.mkv
+
+*.csv
