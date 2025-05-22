@@ -1,6 +1,8 @@
 # Laplacian Smoothing
-$$P(w|c) 
-= \dfrac{\text{count}(w, c) + 1}{\text{total count in class } c + V}$$
+```math
+P(w|c) 
+= \dfrac{\text{count}(w, c) + 1}{\text{total count in class } c + V}
+```
 
 # Eigenvalues, Eigenvectors
 ```python
