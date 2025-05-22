@@ -57,50 +57,41 @@ Mean of the leaves for regression and majority vote for classification.
 
 # AdaBoost
 ![alt text](image-18.png)
-Create stumps $T^{(i)}$ (trees with depth of 1) that are weak classifiers. The next tree will focus on the misclassified data points $x_j$ of the previous tree by updating (increasing) the probability to sample those points ($w_j$). The final prediction is a weighted sum of all the trees.
+Create stumps (trees with depth of 1) $T^{(i)}$ that are weak classifiers. The next tree will focus on the misclassified data points $x_j$ of the previous tree by updating (increasing) the probability to sample those points ($w_j$). The final prediction is a weighted sum of all the trees.
 ## Calculate $\text{Amount of Say}_{T^{(i)}}$
-$$
-\text{Amount of Say}_{T^{(i)}} = \dfrac{1}{2} \log \left( \frac{1 - \text{Error}_{T^{(i)}}}{\text{Error}_{T^{(i)}}} \right) = \dfrac{1}{2} \log \left(\text{Odds}_{T^{(i)}} \right)\\
-
-$$
+$$\text{Amount of Say}_{T^{(i)}} 
+= \dfrac{1}{2} \log \left( \frac{1 - \text{Error}_{T^{(i)}}}{\text{Error}_{T^{(i)}}} \right) = \dfrac{1}{2} \log \left(\text{Odds}_{T^{(i)}} \right)$$
 ## Update the sampling probability $w_j$
 ### $y\in \{-1,1\}$
-$$
-w_j = \begin{cases}
+$$w_j = \begin{cases}
     w_j \times \exp\left(\text{Amount of Say}_{T^{(i)}}\right) & \text{if } y_j \text{ is misclassified} \\
     w_j \times \exp\left(-\text{Amount of Say}_{T^{(i)}}\right) & \text{if } y_j \text{ is classified correctly}
-\end{cases}
-$$
+\end{cases}$$
 ![alt text](image-19.png)
 ![alt text](image-20.png)
 ### $y\in \{0,1\}$
-$$
-w_j = \begin{cases}
+$$w_j = \begin{cases}
     w_j \times \exp\left(\text{Amount of Say}_{T^{(i)}}\right) & \text{if } y_j \text{ is misclassified} \\
     w_j  & \text{if } y_j \text{ is classified correctly}
-\end{cases}
-$$
+\end{cases}$$
 ![alt text](image-23.png)
 ## Normalize $w_j$ and resample data for the next stump
 ![alt text](image-21.png)
 ![alt text](image-22.png)
 ## Prediction
-$$
-\text{Prediction} = 
+$$\text{Prediction} = 
 \begin{cases}
 \sum_{i=1}^{M} \text{Amount of Say}_{T^{(i)}} \cdot T^{(i)}(x) & \text{regression} \\
 \argmax_{c} \sum_{i=1}^{M} \text{Amount of Say}_{T^{(i)}} \cdot \mathbb{I}(T^{(i)}(x) = c) & \text{classification}
-\end{cases}
-$$
+\end{cases}$$
 where $M$ is the number of trees.
 
 # Gradient Boosting
 <!-- TODO: resolve the relationship between logits, probabilities and gradients-->
 ## Overview
 Gradient Boosting is an ensemble technique that builds models sequentially. Each new model is trained to correct the errors (pseudo-residuals) made by the previous models.
-$$
-\text{Pseudo-residuals} = r_{m}(x) = -\frac{\partial L(y, F_{m-1}(x))}{\partial F_{m-1}(x)}
-$$
+$$ \text{Pseudo-residuals} 
+= r_{m}(x) = -\frac{\partial L(y, F_{m-1}(x))}{\partial F_{m-1}(x)} $$
 where $L$ is the loss function, $y$ is the true label, and $F_{m-1}(x)$ is the prediction from the previous model.
 
 ## Pseudocode
@@ -111,9 +102,8 @@ where $L$ is the loss function, $y$ is the true label, and $F_{m-1}(x)$ is the p
    3. Update the model with the new model.
 
 ## Update
-$$
-F_{m}(x) = F_{m-1}(x) + \gamma_m h_m(x)
-$$
+$$ F_{m}(x) 
+= F_{m-1}(x) + \gamma_m h_m(x) $$
 where $h_m(x)$ is the output of the new model and $\gamma_m$ is the step size/learning rate.  
 For regression, $F_m, F_{m-1}$ are in the label space.  
 For classification, $F_m, F_{m-1}$ are in the log-odds/logits space. Use softmax to convert logits to probabilities.
