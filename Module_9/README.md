@@ -58,12 +58,12 @@ q(z) &= \frac{1}{\sqrt{(2\pi)^D |I|}} \exp\left(-\frac{1}{2}z^T z\right) = (2\pi
 We have
 ```math
 \begin{align*}
-\text{KL}(p||q) &=\int{p(z)\log\dfrac{p(z)}{q(z)}}dz\\
+\text{KL}(p\|q) &=\int{p(z)\log\dfrac{p(z)}{q(z)}}dz\\
 &=\int{p(z)\left(\underbrace{\log{p(z)}}_{-\frac{D}{2}\log(2\pi) - \frac{1}{2}\sum_{i=1}^D \log(\sigma_i^2) - \frac{1}{2}\sum_{i=1}^D \frac{(z_i - \mu_i)^2}{\sigma_i^2}}-\underbrace{\log{q(z)}}_{-\frac{D}{2}\log(2\pi) - \frac{1}{2}\sum_{i=1}^D z_i^2}\right)}dz\\
 &= \int{p(z)\left(-\frac{1}{2}\sum_{i=1}^D \left(\log(\sigma_i^2) + \frac{(z_i - \mu_i)^2}{\sigma_i^2} - z_i^2\right)\right)}dz\\
 \end{align*}
 ```
-Due to the diagonal covariance, the dimensions are independent. We can evaluate the expectation for each dimension $i$ separately.
+Because the dimensions are assumed to be independent (diagonal covariance matrix), we can evaluate the expectation for each dimension $i$ separately.
 ```math
 E_{p(z)}\left[\log(\sigma_i^2) + \frac{(z_i - \mu_i)^2}{\sigma_i^2} - z_i^2\right] = E_{p(z)}[\log(\sigma_i^2)] + E_{p(z)}\left[\frac{(z_i - \mu_i)^2}{\sigma_i^2}\right] - E_{p(z)}[z_i^2]
 ```
@@ -82,7 +82,7 @@ E_{p(z)}\left[\log(\sigma_i^2) + \frac{(z_i - \mu_i)^2}{\sigma_i^2} - z_i^2\righ
 Summing over all dimensions:
 ```math
 \begin{align*}
-D_{KL}(P||Q)
+D_{KL}(P\|Q)
 &= -\frac{1}{2}\sum_{i=1}^D (\log(\sigma_i^2) + 1 - \sigma_i^2 - \mu_i^2)\\
 &= \frac{1}{2}\sum_{i=1}^D (\sigma_i^2 + \mu_i^2 - 1 - \log(\sigma_i^2))
 \end{align*}
