@@ -139,7 +139,7 @@ where $h_m(x)$ is the output of the new model and $\gamma$ is the step size/lear
 For regression, $F_m, F_{m-1}$ are in the label space.  
 For classification, $F_m, F_{m-1}$ are in the log-odds/logits space. Use softmax to convert logits to probabilities.
 
-## Example
+## Example <a name="example"></a>
 ### Regression
 ![alt text](image-24.png)
 In the above example, $\gamma\coloneqq\nu=0.1$ is the learning rate, $h_m(x_i)\coloneqq \sum_{j=1}^{J_m} \gamma_{jm}\mathbb{I}(x_i\in R_{jm})$ is the output of the new model, $J_m$ is the number of leaves of the new model, $R_{jm}$ is the $j$-th leaf of the new model.
@@ -271,3 +271,54 @@ F_0(x_0) &\coloneqq \begin{pmatrix} 0 & 0 & 0 \end{pmatrix}\\
 [AGBoost.ipynb](Source%20Codes/Ada-Gra%20Boost/AGBoost.ipynb)
 
 # XGBoost
+![alt text](image-25.png)
+Note that the formulae for Similarity Score are incorrect. The nominator should be $\sum (\text{Residual}^2)$.
+## Overview
+XGBoost is an optimized version of Gradient Boosting. It uses a more efficient algorithm (2nd order Taylor expansion) for tree construction and includes regularization to prevent overfitting.
+## Derivative: Gradient and Hessian for Classificaion and Regression
+
+| Objective Type       | Loss Function ($\mathcal{LL}_i$)                                      | First-Order Gradient $\left(g_i = \frac{\partial L_i}{\partial F_i}\right)$ | Second-Order Gradient $\left(h_i = \frac{\partial^2 L_i}{\partial F_i^2}\right)$ | Output value $\left(o_i=\dfrac{\sum_\text{same leaf} g_i}{\sum_\text{same leaf} h_i+\lambda}\right)$ |
+| :------------------- | :--------------------------------------------------------- | :-------------------------------------------------------------- | :----------------------------------------------------------------- | :------------------- |
+| **Regression** | Mean Squared Error (MSE): $\frac{1}{2}(y_i - F_i)^2$       | $F_i - y_i$                                                     | $1$                                                                | $\dfrac{\sum (F_i - y_i)}{\sum 1+\lambda}=\dfrac{\sum \text{Ressidual}}{\text{\# of Residual}+\lambda}$                 |
+| **Binary Classification** | Log Loss / Binary Cross-Entropy: $-[y_i \log(p_i) + (1-y_i) \log(1-p_i)]$ | $p_i - y_i$                                                     | $p_i(1-p_i)$                                                       | $\dfrac{\sum (p_i - y_i)}{\sum p_i(1-p_i)+\lambda}=\dfrac{\sum \text{Residual}}{\sum p_i(1-p_i)+\lambda}$                 |
+| **Multi-class Classification** | Softmax Cross-Entropy: $-\sum_{k=1}^{K} y_{ik} \log(p_{ik})$ | $p_{ik} - y_{ik}$                                               | $p_{ik}(1-p_{ik})$                                                 | $o_{i,k}=\dfrac{\sum (p_i - y_i)}{\sum p_i(1-p_i)+\lambda}=\dfrac{\sum \text{Residual}}{\sum p_i(1-p_i)+\lambda}$               |
+
+**Notes:**
+
+* $y_i$: True label (or target value).
+* $F_i$: Current predicted raw score/log-odds for sample $i$ (sum of tree outputs).
+* $o_{i(,k)}$: Output value (for class $k$) for sample $i$ for the current tree.
+* $p_i$: Predicted probability for sample $i$, derived from $F_i$ using a sigmoid (binary) or softmax (multi-class) function.
+    * For binary: $p_i = \frac{1}{1 + e^{-F_i}}$
+    * For multi-class: $p_{ik} = \frac{e^{F_{ik}}}{\sum_{j=1}^{K} e^{F_{ij}}}$ (where $F_{ik}$ is the score for class $k$).
+* The gradients ($g_i$) tell us the direction of steepest ascent of the loss, so trees aim to fit the negative of these.
+* The Hessians ($h_i$) provide information about the curvature of the loss function, enabling XGBoost to take more optimal steps.
+
+## Similarity score
+```math
+\text{Similarity Score} = \dfrac{\sum_{i=1}^{N} g_i^2}{\sum_{i=1}^{N} h_i + \lambda}
+```
+where 
+* $N$ is the number of samples in the node
+* $g_i$ is the first-order gradient
+* $h_i$ is the second-order gradient
+* $\lambda$ is a regularization parameter.
+## Gain and Branching
+![alt text](image-26.png)
+```math
+\text{Gain} = \sum \text{Similarity Score}_\text{children} - \text{Similarity Score}_{\text{parent}}
+```
+
+Only branch if $\text{Gain} > \gamma$, where $\gamma$ is a threshold parameter.
+## Cover and Pruning
+```math
+\text{Cover} = \sum_{i=1}^{N} h_i
+```
+where $N$ is the number of samples in the node. Default minimum is $1$.
+
+## Example
+See [Example for Gradient Boosting](#example) for a detailed example.  
+The calculation is practically the same, except for regularization parameters and the use of gradients and Hessians instead of pseudo-residuals.
+
+## Python notebook
+[XGBoost.ipynb](Source%20Codes/XGBoost/XGBoost.ipynb)
