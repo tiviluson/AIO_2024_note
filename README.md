@@ -1,8 +1,7 @@
 # AIO_2024_note
 This repository is a collection of notes and resources for the AIO 2024 course. The notes are organized by module, and each module contains lecture notes, exercises, and other relevant materials.  
 
-Disclaimer: I only created notes for points that I found interesting or useful during exams/interviews, so this is not a reflection of the entire course.  
-
+**Disclaimer**: This is not a reflection of the entire course. I only created notes for points that I found interesting or useful during exams/interviews. Furthermore, some notes are not properly cross-checked or being jotted down with my own understanding. This repository is a work in progress and will be updated as I continue to learn and explore the topics covered in and beyond the course. The notes are intended to be a helpful resource for anyone interested in learning more about the course material.
 
 Please check out the [AIVN](https://aivnlearning.edu.vn/) website for more information about the course.
 
