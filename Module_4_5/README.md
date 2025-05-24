@@ -25,3 +25,18 @@
 # Softmax Regression
 ![alt text](image-13.png)
 ![alt text](image-14.png)
+
+
+# Initializers
+## Expectation and Variance
+```math
+\mathbb{E}(\sum_{i=1}^{n}X_i) = \sum_{i=1}^{n}\mathbb{E}(X_i)\\
+Var(\sum_{i=1}^{n}X_i) = \sum_{i=1}^{n}\sum_{j=1}^{n}Cov(X_i, X_j) \Rightarrow
+```
+<!-- TODO -->
+![alt text](image-15.png)
+
+# Optimizers
+![alt text](image-16.png)
+![alt text](image-17.png)
+![alt text](image-18.png)
