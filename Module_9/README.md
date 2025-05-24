@@ -114,15 +114,15 @@ x_0 =\dfrac{x_t-\sqrt{1-\bar\alpha_t}*\epsilon_t}{\sqrt{\bar\alpha_t}}
 ```
 ```math
 \mu_{t-1}(x_0, x_t) 
-= \frac{\sqrt{\bar{\alpha}_{t-1}}\beta_t}{1 - \bar{\alpha}_t} x_0 + \frac{\sqrt{\alpha_t}(1 - \bar{\alpha}_{t-1})}{1 - \bar{\alpha}_t} x_t
+= \frac{\sqrt{\bar\alpha_{t-1}}\beta_t}{1 - \bar\alpha_t} x_0 + \frac{\sqrt{\alpha_t}(1 - \bar\alpha_{t-1})}{1 - \bar\alpha_t} x_t
 ```
 
 where:
 - $x_0$ is the original data.
 - $x_t$ is the data at timestep $t$.
 - $\alpha_t = 1 - \beta_t$, where $\beta_t$ is the variance schedule.
-- $\bar{\alpha}_t = \prod_{i=1}^t \alpha_i$.
-- $\bar{\alpha}_{t-1} = \prod_{i=1}^{t-1} \alpha_i$ (with $\bar{\alpha}_0 = 1$).
+- $\bar\alpha_t = \prod_{i=1}^t \alpha_i$.
+- $\bar\alpha_{t-1} = \prod_{i=1}^{t-1} \alpha_i$ (with $\bar\alpha_0 = 1$).
 ### Sample code
 [[Colab]_Denoising_Diffusion_Probabilistic_Models.ipynb]([Colab]_Denoising_Diffusion_Probabilistic_Models.ipynb)
 
