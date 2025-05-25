@@ -7,8 +7,7 @@ This repository is a work in progress and will be updated as I continue to learn
 - Some notes were jotted down with my own understanding, and may not have been properly cross-checked. 
 - Some slides are modified from the original course materials based on my understanding, and may not be accurate or complete.
 - I am highly interested in Mathematical concepts, so I may have included more math (especially proofs) than necessary in some notes.
-
-The Markdown notes are optimized to render with KaTeX. 
+- The Markdown notes are optimized to render with KaTeX. Although I have tried to ensure compatibility with GitHub's Markdown renderer, some mathematical expressions may not render correctly.
 
 Please check out the [AI Viet Nam](https://www.facebook.com/aivietnam.edu.vn) website for more information about the course.
 
