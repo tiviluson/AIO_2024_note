@@ -6,6 +6,7 @@
 ```math
 \Rightarrow \text{padding="same"} \Leftrightarrow k=2p+1
 ```
+## Distinguished CNN architectures (TODO)
 
 # Recurrent Neural Networks (RNNs)
 [RNN](https://docs.pytorch.org/docs/stable/generated/torch.nn.RNN.html)
@@ -52,3 +53,7 @@ where $\text{head}_i = \text{Attention}(QW_{Q_i}, KW_{K_i}, VW_{V_i})$ and $W_{Q
 ### Examples (TODO)
 
 ### Variations (TODO)
+#### Vision Transformer (ViT)
+[ViT](https://pytorch.org/vision/stable/models/generated/torchvision.models.vit_b_16.html)
+#### Swin Transformer
+[Swin Transformer](https://pytorch.org/vision/stable/models/generated/torchvision.models.swin_b_256.html)
