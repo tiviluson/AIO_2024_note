@@ -125,3 +125,13 @@ Discussed optimizers:
 ![alt text](image-16.png)
 ![alt text](image-17.png)
 ![alt text](image-18.png)
+
+# Batch Normalization
+![alt text](image-19.png)
+```math
+\begin{align*}
+\hat{x}_l &= \dfrac{x_l - \mu_l}{\sqrt{\sigma_l^2 + \epsilon}}\\
+\hat{x}_l &= \gamma\hat{x}_l + \beta\\
+\end{align*}
+```
+where $\gamma$ and $\beta$ are learnable parameters.
