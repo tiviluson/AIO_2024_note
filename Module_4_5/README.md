@@ -30,16 +30,17 @@
 ## Summary
 | Activation Function             | Formula                                                                                                | Derivative $f'(x)$                                                                                                                               |
 | :------------------------------ | :----------------------------------------------------------------------------------------------------- | :----------------------------------------------------------------------------------------------------------------------------------------------- |
-| **Sigmoid** | $\sigma(x) = \frac{1}{1 + e^{-x}}$                                                                          | $\sigma(x)(1 - \sigma(x))$                                                                                                                                 |
-| **tanh** (Hyperbolic Tangent)   | $\tanh(x) = \frac{2}{1 + e^{-2x}} - 1 = \frac{e^x - e^{-x}}{e^x + e^{-x}}$                                   | $1 - \tanh^2(x)$                                                                                                                                     |
+| **Sigmoid** | $\sigma(x) = \dfrac{1}{1 + e^{-x}}$                                                                          | $\sigma(x)(1 - \sigma(x))$                                                                                                                                 |
+| **tanh** (Hyperbolic Tangent)   | $\tanh(x) = \dfrac{2}{1 + e^{-2x}} - 1 = \dfrac{e^x - e^{-x}}{e^x + e^{-x}}$                                   | $1 - \tanh^2(x)$                                                                                                                                     |
 | **Softmax** | $\text{softmax}(x)_i = \dfrac{e^{x_i}}{\sum_{j=1}^{C} e^{x_j}}$                                                                                 | $\dfrac{d}{dx_j}\text{softmax(x)}_i=\begin{cases} \text{softmax(x)}_i(1-\text{softmax(x)}_i) & \text{if } i=j \\ -\text{softmax(x)}_i\cdot\text{softmax(x)}_j & \text{if } i \neq j \end{cases}$                                                                                                      |  
-| **Softplus** | $f(x) = \log(1 + e^x)$                                                                                 | $\frac{1}{1 + e^{-x}}=\sigma(x)$                                                                                                       |
+| **Softplus** | $f(x) = \log(1 + e^x)$                                                                                 | $\dfrac{1}{1 + e^{-x}}=\sigma(x)$                                                                                                       |
 | **ReLU** (Rectified Linear Unit) | $f(x) = \begin{cases} 0 & \text{if } x < 0 \\ x & \text{if } x \ge 0 \end{cases}$                           | $f'(x) = \begin{cases} 0 & \text{if } x < 0 \\ 1 & \text{if } x > 0 \end{cases}$ (undefined at $x=0$)                                              |
 | **ELU** (Exponential Linear Unit) | $f(x) = \begin{cases} \alpha(e^x - 1) & \text{if } x < 0 \\ x & \text{if } x \ge 0 \end{cases}$           | $f'(x) = \begin{cases} \alpha e^x & \text{if } x < 0 \\ 1 & \text{if } x > 0 \end{cases}$ (derivative is $\alpha$ at $x=0$ from left, $1$ from right) |
 | **PReLU** (Parametric ReLU)     | $f(x) = \begin{cases} ax & \text{if } x < 0 \\ x & \text{if } x \ge 0 \end{cases}$                            | $f'(x) = \begin{cases} a & \text{if } x < 0 \\ 1 & \text{if } x > 0 \end{cases}$ (undefined at $x=0$)                                               |
 | **SELU** (Scaled Exponential Linear Unit) | $f(x) = \begin{cases} \lambda x & \text{if } x \ge 0 \\ \lambda \alpha (e^x - 1) & \text{if } x < 0 \end{cases}$ <br> ($\lambda \approx 1.0507$, $\alpha \approx 1.6733$) | $f'(x) = \begin{cases} \lambda & \text{if } x > 0 \\ \lambda \alpha e^x & \text{if } x < 0 \end{cases}$                                                     |
-| **Swish** (also SiLU - Sigmoid Linear Unit) | $\text{swish}(x) = x \cdot \frac{1}{1 + e^{-x}} = x \cdot \sigma(x)$                                          | $\sigma(x) + x \cdot \sigma(x)(1 - \sigma(x)) = \text{swish}(x) + \sigma(x)(1-\text{swish}(x))$                                       |
+| **Swish** (also SiLU - Sigmoid Linear Unit) | $\text{swish}(x) = x \cdot \dfrac{1}{1 + e^{-x}} = x \cdot \sigma(x)$                                          | $\sigma(x) + x \cdot \sigma(x)(1 - \sigma(x)) = \text{swish}(x) + \sigma(x)(1-\text{swish}(x))$                                       |
 | **GELU** (Gaussian Error Linear Unit) | Approx: $f(x) \approx x \cdot \sigma(1.702x)$ <br> Exact: $f(x) = x \Phi(x) = xP(X \leq x \| X \sim \mathcal{N}(0, 1))$                      | Approx: $\sigma(1.702x) + 1.702x \cdot \sigma(1.702x)(1 - \sigma(1.702x))$ <br> Exact: $\Phi(x) + x\phi(x)$ where $\phi(x)$ is the PDF of std. normal dist. |
+| **SwiGLU** (Swish-Gated Linear Unit) | $f(x) = \sigma(x_1)\odot x_2$ where $x=[x_1, x_2]$ and $\odot$ is the element-wise (Hadamard) product                     | Nope |
 ## Remark for the derivative of Cross-Entropy Loss with Softmax
 Let
 ```math
@@ -47,7 +48,7 @@ Let
 \text{CE\_Loss}(y,\hat{y}) &= \mathcal{L}(y, \hat{y})\\
 &\coloneqq -\sum_{i=1}^{C} y_i \log(\hat{y}_i)\\
 &= -\sum_{i=1}^{C} y_i \log(\text{softmax}(z_i))\\
-&= -\sum_{i=1}^{C} y_i \log\left(\frac{e^{z_i}}{\sum_{j=1}^{C} e^{z_j}}\right)\\
+&= -\sum_{i=1}^{C} y_i \log\left(\dfrac{e^{z_i}}{\sum_{j=1}^{C} e^{z_j}}\right)\\
 \end{align*}
 ```
 We have
@@ -120,8 +121,7 @@ Discussed optimizers:
 - AdaGrad: use the cumulative sum of squared gradients to scale down the learning rate
 - RMSProp: use the exponentially weighted average of squared gradients (called *variance*) to normalize the gradient
 - Adam: combines ideas from RMSProp and momentum
-- AdamW: decouples weight decay from the optimization step $(\underbrace{\theta_t=\theta_{t-1}-\eta\frac{m_t}{\sqrt{v_t}+\epsilon}}_{\text{Adam}}-\eta\theta_{t-1})$
-
+- AdamW: decouples weight decay from the optimization step $(\underbrace{\theta_t=\theta_{t-1}-\eta\dfrac{m_t}{\sqrt{v_t}+\epsilon}}_{\text{Adam}}-\eta\theta_{t-1})$
 ![alt text](image-16.png)
 ![alt text](image-17.png)
 ![alt text](image-18.png)
