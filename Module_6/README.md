@@ -19,6 +19,13 @@ where
 > $W_{hh}$ of $(H, H)$ </br>
 > $b_{ih}, b_{hh}$ of $(H)$
 
+## Example of `output` and `hn`
+![alt text](image-2.png)
+![alt text](image-3.png)
+In case `num_layers` $>1$:
+- `output` includes `h_t` that maps to [`h`, `e`, `l`, `l`, `o`, `<END>`]
+- `hn` includes [`h[0]`, `h[1]`], where `h[1]` maps to `<END>`.
+
 # Long Short-Term Memory (LSTM)
 [LSTM](https://docs.pytorch.org/docs/stable/generated/torch.nn.LSTM.html)
     ![alt text](lstm.png)
