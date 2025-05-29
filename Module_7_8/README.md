@@ -3,6 +3,8 @@
 # Knowledge distillation
 
 # Object detection
+![alt text](image-18.png)
+
 ## Non Maximal Suppression (NMS)
 ![alt text](image-9.png)
 ## With CNN
@@ -11,7 +13,25 @@
 ![alt text](image-7.png)
 
 ## With YOLOs
+![alt text](image-19.png)
 
+### YOLO-v1
+**Architecture**: divides image into 7×7 grid, each cell predicts 2 boxes + 20 classes → 1470 output vector.
+![alt text](image-20.png)
+**Loss function**: 
+$$\text{Loss = bbox regression + object confidence + class prediction (with weighted terms).}$$
+![alt text](image-22.png)
+
+### YOLO-v2
+**Architecture**: adds anchor boxes, removes FC layers, uses lighter backbone (Darknet-19).
+![alt text](image-27.png)
+**Loss function**: same as YOLO-v1, but with additional terms for bounding box regression
+![alt text](image-23.png)
+![alt text](image-24.png)
+
+### YOLO-v3
+**Architecture**: adds SPP (Spatial Pyramid Pooling) module, uses Darknet-53 backbon
+![alt text](image-25.png)
 ## With Transformers
 
 # Mixture of Experts (MoE)
