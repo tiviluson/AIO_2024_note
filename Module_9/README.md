@@ -13,7 +13,7 @@ This removes the spatial information, which aligns with the definition of "style
 
 ## Loss
 ```math
-L(\text{output}, \text{content}, \text{style}) =\lambda_\text{content}\times\underbrace{L_\text{content}}_{\text{MSE}(output,content)} + \lambda_\text{style}\times\underbrace{L_\text{style}}_{\text{MSE}(\text{Gram}(\text{Output}),\text{Gram}(\text{style})) }
+L(\text{output}, \text{content}, \text{style}) =\lambda_\text{content}\times\underbrace{L_\text{content}}_{\text{MSE}(\text{output},\text{content})} + \lambda_\text{style}\times\underbrace{L_\text{style}}_{\text{MSE}(\text{Gram}(\text{Output}),\text{Gram}(\text{style})) }
 ```
 
 # GAN (Generative Adversarial Network)
@@ -46,6 +46,7 @@ L
 &= \text{BCE}(x,\hat{x}) - \dfrac{1}{2}\sum(1+\text{logvar}-\mu^2-\exp(\text{logvar}))
 \end{align*}
 ```
+Here, as an example, $\text{BCE}$ is used as the reconstruction loss for single channel images.
 ### Proof of the equivalence of KL divergence (optional)
 Let $P(z)=N(\mu,\Sigma^2)$ and $Q(z)=N(0,1)$ with $\Sigma$ being a diagonal covariance matrix. Therefore, the *pdf*s of $P$ and $Q$ are respectively:
 ```math
@@ -87,6 +88,9 @@ D_{KL}(P\|Q)
 &= \frac{1}{2}\sum_{i=1}^D (\sigma_i^2 + \mu_i^2 - 1 - \log(\sigma_i^2))
 \end{align*}
 ```
+## Conditional VAE (CVAE)
+![alt text](image-9.png)
+
 
 # DDPM - Denoising Diffusion Probabilistic Model
 ![alt text](image-7.png)
@@ -140,3 +144,11 @@ lc = \dfrac{\sqrt{\alpha_t}\times(1-\bar\alpha_{t-1})}{1-\bar\alpha_t}\\
 ### Classifier guidance
 
 ### Classifier-free guidance
+
+# Flow Matching
+![alt text](image-10.png)
+![alt text](image-11.png)
+![alt text](image-12.png)
+![alt text](image-13.png)
+![alt text](image-14.png)
+![alt text](image-16.png)
