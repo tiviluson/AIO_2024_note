@@ -30,8 +30,9 @@ $$\text{Loss = bbox regression + object confidence + class prediction (with weig
 ![alt text](image-24.png)
 
 ### YOLO-v3
-**Architecture**: adds SPP (Spatial Pyramid Pooling) module, uses Darknet-53 backbon
+**Architecture**: adds SPP (Spatial Pyramid Pooling) module, uses Darknet-53 backbone.
 ![alt text](image-25.png)
+
 ## With Transformers
 
 # Mixture of Experts (MoE)
@@ -70,12 +71,12 @@ $$\text{Loss = bbox regression + object confidence + class prediction (with weig
 
 # Question Answering (QA)
 ![alt text](image-13.png)
-## Classification
+## By classification
 ![alt text](image-14.png)
-## Extraction
+## By extraction
 ![alt text](image-16.png)
 ![alt text](image-12.png)
-## Generation
+## By generation
 ![alt text](image-15.png)
 
 # KAN
