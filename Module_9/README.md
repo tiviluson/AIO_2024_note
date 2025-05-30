@@ -37,8 +37,19 @@ H_{out} = W_{out}
 # VAE (Variational AutoEncoder)
 ![alt text](image-3.png)
 where $p_\theta(x|z)$ is the *true* posterior and $q_\phi(z|x)$ is the *approximated* prior.
-![alt text](image-2.png)
+
 ## Loss function
+### General form
+```math
+\mathcal{L}(\theta, \phi; x) = -\underbrace{\mathbb{E}_{q_\phi(z|x)}[\log p_\theta(x|z)]}_{\text{Reconstruction loss}} + \underbrace{D_{KL}(q_\phi(z|x) \| p(z))}_{\text{Regularization term}}
+```
+where:
+- $q_\phi(z|x)$ is the encoder (inference model) that approximates the **true posterior**.
+- $p_\theta(x|z)$ is the decoder (generative model) that generates the data from the latent space.
+- $p(z)$: is the **prior distribution**, typically a standard normal distribution $\mathcal{N}(0, I)$.
+
+### Example of loss function for MNIST dataset
+![alt text](image-2.png)
 ```math
 \begin{align*}
 L 
@@ -47,7 +58,7 @@ L
 \end{align*}
 ```
 Here, as an example, $\text{BCE}$ is used as the reconstruction loss for single channel images.
-### Proof of the equivalence of KL divergence (optional)
+### Proof of the equivalence of KL divergence in the previous example (optional)
 Let $P(z)=N(\mu,\Sigma^2)$ and $Q(z)=N(0,1)$ with $\Sigma$ being a diagonal covariance matrix. Therefore, the *pdf*s of $P$ and $Q$ are respectively:
 ```math
 \begin{align*}
@@ -93,44 +104,67 @@ D_{KL}(P\|Q)
 
 
 # DDPM - Denoising Diffusion Probabilistic Model
+[Paper - Denoising Diffusion Probabilistic Models](https://arxiv.org/abs/2006.11239)
 ![alt text](image-7.png)
 ![alt text](image-8.png)
 ## Training
 ### Forward
 Gradually add increasing noise to a clean input.  
-Generate the constants $\beta, \alpha, \bar\alpha,\sqrt{\bar\alpha},\sqrt{1-\bar\alpha}$ from $\beta_{s}, \beta_{e}, T$ and noised images $x_t$ from $x_0$. Note that the added noise (and of course the cummulative noise) in each time step $t$ increases with $t$.
+Generate the constants $\beta, \alpha, \bar\alpha,\sqrt{\bar\alpha},\sqrt{1-\bar\alpha}$ from $\beta_{s}, \beta_{e}, T$ and noised images $x_t$ from $x_0$. Note that the added noise (and of course the cummulative noise) in each time step $t$ increases with $t$.  
+Furthermore, in the Python code and next slide, the constants are indexed from $0$ to $T-1$. In other slides, including the proofs, they are indexed from $1$ to $T$.
 ![alt text](image-5.png)
 ![alt text](image-6.png)
-$x_t$ can be sampled from $x_{t-1}$ or $x_0$.
+$x_t$ can be sampled from $x_{t-1}$ or $x_0$. The constants in the previous slide and the proofs below are indexed from $1$ to $T$.
 ### Reverse
 * Predict $\epsilon_t(x_t,t)$ approximating $\epsilon$, the noise added to $x_0$ to sample $x_t$ via $x_t=\sqrt{\bar\alpha_t}x_0+\sqrt{1-\bar\alpha_t}\epsilon$.
-* Predict $\hat{x}_{\theta}(x_t, t)$ or $\mu_\theta(x_t, t)$ to (indirectly) approximate $\mu_{t-1}(x_t, x_0)$
-* Predict $s(x_t, t)$
-### Sampling/Inference: TODO
-#### From $x_t$ and $\epsilon_t$
+* Predict $\hat{x}_{\theta}(x_t, t)$ or $\hat{\mu}_\theta(x_t, t)$ to (indirectly) approximate $\mu_{t-1}(x_t, x_0)$
+* Predict $s(x_t, t)$ approximating $\nabla _{x_t}\log p_\theta(x_t)$
+### Sampling/Inference:
 ```math
-x_{t-1} =\underbrace{\dfrac{1}{\sqrt{\alpha_t}}\left(x_t-\dfrac{1-\alpha_t}{\sqrt{1-\bar\alpha_t}}\epsilon_t(x_t,t)\right)}_{\text{mean}}+\underbrace{\sqrt{\beta_t}}_{\text{std}}\epsilon, \text{ where } \beta_0=0, t\in[1,T]
+p_\theta(x_{t-1}|x_t) = \mathcal{N}(\hat{\mu}_{\theta}(x_t, t), \sigma^2_t I)
 ```
+where $\hat{\mu}_{\theta}(x_t, t)$ is the predicted mean and $\sigma^2_t$ is the variance at timestep $t$.  
 
-#### From $x_0$ and $x_t$
+There are two choices for $\sigma^2_t$ of approximately equivalent performance:
+- $\sigma^2_t=\beta_t$
+- $\sigma^2_t=\dfrac{1-\bar{\alpha}_{t-1}}{1-\bar\alpha_t}\beta_t$
+
+#### Via $x_t$ and $t$
 ```math
-x_0 =\dfrac{x_t-\sqrt{1-\bar\alpha_t}*\epsilon_t}{\sqrt{\bar\alpha_t}}
+\hat{\mu}_{\theta}(x_t, t)=\hat{\mu}_{t-1}(x_t, t)=\dfrac{1}{\sqrt{\alpha_t}}\left(x_t-\dfrac{1-\alpha_t}{\sqrt{1-\bar\alpha_t}}\epsilon_t(x_t,t)\right)
+```
+where $\beta_0=0, t\in[1,T]$
+
+#### Via $\hat{x}_0$ and $x_t$ using $\epsilon_t(x_t,t)$
+```math
+\hat{x}_0 =\dfrac{x_t-\sqrt{1-\bar\alpha_t}\cdot\epsilon_t}{\sqrt{\bar\alpha_t}}
 ```
 ```math
-\mu_{t-1}(x_0, x_t) 
-= \frac{\sqrt{\bar\alpha_{t-1}}\beta_t}{1 - \bar\alpha_t} x_0 + \frac{\sqrt{\alpha_t}(1 - \bar\alpha_{t-1})}{1 - \bar\alpha_t} x_t
+\hat{\mu}_{\theta}(\hat{x}_0, x_t) =\hat{\mu}_{t-1}(\hat{x}_0, x_t) 
+= \dfrac{\sqrt{\bar\alpha_{t-1}}\beta_t}{1 - \bar\alpha_t} \hat{x}_0 + \dfrac{\sqrt{\alpha_t}(1 - \bar\alpha_{t-1})}{1 - \bar\alpha_t} x_t
+```
+### Via $x_0$ and $x_t$ using $s(x_t, t)$
+[Tweedie's formula](https://efron.ckirby.su.domains/papers/2011TweediesFormula.pdf)
+![alt text](image-17.png)
+![alt text](image-18.png)
+![alt text](image-19.png)
+```math
+\begin{cases}
+x_0 =\dfrac{x_t+(1-\bar\alpha_t)\cdot\nabla _{x_t}\log p_\theta(x_t)}{\sqrt{\bar\alpha_t}}\\
+\mu_{q}(x_t, x_0) =\dfrac{\sqrt{\bar\alpha_{t-1}}\beta_t}{1 - \bar\alpha_t} x_0 + \dfrac{\sqrt{\alpha_t}(1 - \bar\alpha_{t-1})}{1 - \bar\alpha_t} x_t
+\end{cases}\\
+\Rightarrow \mu_{q}(x_t, x_0)=\dfrac{1}{\sqrt{\alpha_t}}x_t + \dfrac{1-\alpha_t}{\sqrt{\alpha_t}} \nabla_{x_t}\log p(x_t)\\
+\Rightarrow \hat{\mu}_{\theta}(x_t, t)=\hat{\mu}_{t-1}(x_t, t) =\dfrac{1}{\sqrt{\alpha_t}}x_t + \dfrac{1-\alpha_t}{\sqrt{\alpha_t}} s(x_t, t)
 ```
 
 where:
 - $x_0$ is the original data.
-- $x_t$ is the data at timestep $t$.
+- $x_t$ is the data at timestep $t\in[1,T]$.
 - $\alpha_t = 1 - \beta_t$, where $\beta_t$ is the variance schedule.
 - $\bar\alpha_t = \prod_{i=1}^t \alpha_i$.
-- $\bar\alpha_{t-1} = \prod_{i=1}^{t-1} \alpha_i$ (with $\bar\alpha_0 = 1$).
-### Sample code
-[[Colab]_Denoising_Diffusion_Probabilistic_Models.ipynb]([Colab]_Denoising_Diffusion_Probabilistic_Models.ipynb)
-
-```math
+- $\hat{\mu}_{\theta}(x_t, t)=\hat{\mu}_{t-1}(x_t, t)$ is the predicted mean at timestep $t-1$ and approximates $\mu_{q}(x_t, t)=\mu_{t-1}(x_t, t)$.
+### Proof of equivalence of the above formulae (optional) (TODO)
+<!-- ```math
 c = \dfrac{\sqrt{\bar\alpha_{t-1}}\times(1-\alpha_{t})}{1-\bar\alpha_t}\\
 lc = \dfrac{\sqrt{\alpha_t}\times(1-\bar\alpha_{t-1})}{1-\bar\alpha_t}\\
 \begin{align*}
@@ -139,7 +173,11 @@ lc = \dfrac{\sqrt{\alpha_t}\times(1-\bar\alpha_{t-1})}{1-\bar\alpha_t}\\
 &=\dfrac{\sqrt{\bar\alpha_{t-1}}\times(1-\alpha_{t})}{1-\bar\alpha_t}*(\dfrac{x_t-\sqrt{1-\bar\alpha_t}*\epsilon}{\sqrt{\bar\alpha_t}})+\dfrac{\sqrt{\alpha_t}\times(1-\bar\alpha_{t-1})}{1-\bar\alpha_t}*x_t\\
 &=x_t\times\left(\dfrac{\sqrt{\bar\alpha_{t-1}}\times(1-\alpha_{t})}{(1-\bar\alpha_t)\sqrt{\bar\alpha_t}}+\dfrac{\sqrt{\alpha_t}\times(1-\bar\alpha_{t-1})}{1-\bar\alpha_t}\right)-\dfrac{\sqrt{1-\bar\alpha_t}}{\sqrt{\bar\alpha_t}}*\dfrac{\sqrt{\bar\alpha_{t-1}}\times(1-\alpha_{t})}{1-\bar\alpha_t}\times\epsilon
 \end{align*}
-```
+``` -->
+### Sample code
+[[Colab]_Denoising_Diffusion_Probabilistic_Models.ipynb]([Colab]_Denoising_Diffusion_Probabilistic_Models.ipynb)
+
+
 
 ### Classifier guidance
 
