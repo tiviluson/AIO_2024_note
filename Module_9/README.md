@@ -36,28 +36,28 @@ H_{out} = W_{out}
 
 # VAE (Variational AutoEncoder)
 ![alt text](image-3.png)
-where $p_\theta(x|z)$ is the *true* posterior and $q_\phi(z|x)$ is the *approximated* prior.
+where $p_\theta(x|z)$ is the [likelihood distribution](https://en.wikipedia.org/wiki/Likelihood_function) of $\theta$ and $q_\phi(z|x)$ is the *approximated* posterior.
 
-## Loss function
+## Objective function
 ### General form
 ```math
-\mathcal{L}(\theta, \phi; x) = -\underbrace{\mathbb{E}_{q_\phi(z|x)}[\log p_\theta(x|z)]}_{\text{Reconstruction loss}} + \underbrace{D_{KL}(q_\phi(z|x) \| p(z))}_{\text{Regularization term}}
+\underbrace{\mathcal{J}(\theta, \phi; x)}_{\text{Evidence Lower Bound (ELBO)}} = \underbrace{\mathbb{E}_{q_\phi(z|x)}[\log p_\theta(x|z)]}_{\text{Reconstruction term}} \underbrace{-D_{KL}(q_\phi(z|x) \| g(z))}_{\text{Regularization term}}
 ```
 where:
-- $q_\phi(z|x)$ is the encoder (inference model) that approximates the **true posterior**.
+- $q_\phi(z|x)$ is the encoder (inference model) that **approximates** the **true but intractable posterior** ($h(z|x)$). The estimation performance is tied to the Reconstruction term, i.e the better the reconstruction, the better the approximation.
 - $p_\theta(x|z)$ is the decoder (generative model) that generates the data from the latent space.
-- $p(z)$: is the **prior distribution**, typically a standard normal distribution $\mathcal{N}(0, I)$.
+- $g(z)$: is the **prior distribution**, typically a standard normal distribution $\mathcal{N}(0, I)$. This is the distribution we want to regularize the latent space to follow. This is also known as the **evidence** or the **marginal likelihood**.
 
 ### Example of loss function for MNIST dataset
 ![alt text](image-2.png)
 ```math
 \begin{align*}
-L 
+\mathcal{L} 
 &= \text{BCE}(x, \hat{x}) + \text{KL}(x, \hat{x}) \\
 &= \text{BCE}(x,\hat{x}) - \dfrac{1}{2}\sum(1+\text{logvar}-\mu^2-\exp(\text{logvar}))
 \end{align*}
 ```
-Here, as an example, $\text{BCE}$ is used as the reconstruction loss for single channel images.
+Here, as an example, $\text{BCE}$ is used as the reconstruction loss for single channel, black and white images. For general cases, `MSE` is often used (under certain assumption, $\text{MSE}\propto \text{BCE}$).
 ### Proof of the equivalence of KL divergence in the previous example (optional)
 Let $P(z)=N(\mu,\Sigma^2)$ and $Q(z)=N(0,1)$ with $\Sigma$ being a diagonal covariance matrix. Therefore, the *pdf*s of $P$ and $Q$ are respectively:
 ```math
