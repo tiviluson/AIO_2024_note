@@ -10,3 +10,14 @@ import numpy as np
 A = np.array([[a, b], [c, d]])
 eigenvalues, eigenvectors = np.linalg.eig(A)
 ```
+
+# Naive Bayes (TODO)
+## Naive Bayes Classifier for Categorical Data
+```python
+from sklearn.naive_bayes import MultinomialNB
+```
+
+## Naive Bayes Classifier for Continuous Data
+```python
+from sklearn.naive_bayes import GaussianNB
+```
