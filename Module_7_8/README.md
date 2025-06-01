@@ -19,7 +19,7 @@
 **Architecture**: divides image into 7×7 grid, each cell predicts 2 boxes + 20 classes → 1470 output vector.
 ![alt text](image-20.png)
 **Loss function**: 
-$$\text{Loss = bbox regression + object confidence + class prediction (with weighted terms).}$$
+Loss = bbox regression + object confidence + class prediction (with weighted terms).
 ![alt text](image-22.png)
 
 ### YOLO-v2
@@ -30,7 +30,7 @@ $$\text{Loss = bbox regression + object confidence + class prediction (with weig
 ![alt text](image-24.png)
 
 ### YOLO-v3
-**Architecture**: adds SPP (Spatial Pyramid Pooling) module, uses Darknet-53 backbon
+**Architecture**: adds SPP (Spatial Pyramid Pooling) module, uses Darknet-53 backbone
 ![alt text](image-25.png)
 ## With Transformers
 
