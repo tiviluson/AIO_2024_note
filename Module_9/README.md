@@ -179,9 +179,9 @@ lc = \dfrac{\sqrt{\alpha_t}\times(1-\bar\alpha_{t-1})}{1-\bar\alpha_t}\\
 
 
 
-### Classifier guidance
+### Classifier guidance (PTODO)
 
-### Classifier-free guidance
+### Classifier-free guidance (PTODO)
 
 # Flow Matching
 ![alt text](image-10.png)
