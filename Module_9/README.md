@@ -179,9 +179,24 @@ lc = \dfrac{\sqrt{\alpha_t}\times(1-\bar\alpha_{t-1})}{1-\bar\alpha_t}\\
 
 
 
-### Classifier guidance (PTODO)
+### Classifier guidance (PTODO sample code)
+![alt text](image-22.png)
+Uses gradients from a pretrained classifier to guide generation.
 
-### Classifier-free guidance (PTODO)
+```math
+\nabla \log p(x_t | y) = \nabla \log p(x_t) + \gamma \cdot \nabla \log p(y | x_t)
+```
+
+
+### Classifier-free guidance (PTODO sample code)
+![alt text](image-21.png)
+Removes external classifier by training with both conditional and unconditional data.
+
+```math
+s_\theta(x_t, t, y) = (1 + \gamma) \cdot s_\theta(x_t, t, y) - \gamma \cdot s_\theta(x_t, t, \varnothing)
+```
+
+
 
 # Flow Matching
 ![alt text](image-10.png)
