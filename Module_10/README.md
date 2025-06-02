@@ -15,9 +15,43 @@
 ## Metrics (TODO)
 ### Perplexity
 ![alt text](image-18.png)
-### Rougue (PTODO)
-### BLEU (PTODO)
+### ROUGE (Recall-Oriented Understudy for Gisting Evaluation)
+- Evaluates **recall**: how much of the reference text appears in the generated output.  
+- Often used in **text summarization**.
 
+🔸 **ROUGE-N** (n-gram Recall): measures overlap of n-grams between candidate and reference.
+
+```math
+\text{ROUGE-N} = \frac{\sum_{\text{ngram} \in \text{Ref}} \text{Count}_{\text{match}}(\text{ngram})}{\sum_{\text{ngram} \in \text{Ref}} \text{Count}(\text{ngram})}
+```
+
+🔸 **ROUGE-L** (Longest Common Subsequence): measures the longest sequence of words shared between candidate and reference.
+```math
+P = \frac{LCS(X, Y)}{|Y|}, \quad
+R = \frac{LCS(X, Y)}{|X|}, \quad
+F_1 = \frac{(1 + \beta^2)PR}{R + \beta^2 P}
+```
+Where
+- $X$: reference text  
+- $Y$: candidate text  
+- $\beta$: weight between precision $P$ and recall $R$ (usually $1$)
+### BLEU (Bilingual Evaluation Understudy)
+Measures n-gram **precision** between candidate and reference.
+```math
+\text{BLEU} = \text{BP} \cdot \exp\left( \sum_{n=1}^N w_n \log p_n \right)
+```
+Where:  
+- **BP** (Brevity Penalty):
+
+```math
+\text{BP} = \begin{cases}
+1 & \text{if } c > r \\
+e^{(1 - \frac{r}{c})} & \text{if } c \leq r
+\end{cases}
+```
+- $p_n$ = precision of n-grams  
+- $w_n = \dfrac{1}{N}$ (equal weights)  
+- $c$ = candidate length, $r$ = reference length
 # Parameter-Efficient Fine-Tuning (PEFT)
 ## Prefix Tuning
 Add **a set** of small, continuous, task-specific, learnable vectors (the *"prefixes"*) to the **hidden states at each layer**.
